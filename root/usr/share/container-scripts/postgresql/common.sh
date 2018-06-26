@@ -154,6 +154,7 @@ function set_passwords() {
 
   if [[ ",$postinitdb_actions," = *,simple_db,* ]]; then
     psql --command "ALTER USER \"${POSTGRESQL_USER}\" WITH ENCRYPTED PASSWORD '${POSTGRESQL_PASSWORD}';"
+    psql --command "ALTER USER \"${POSTGRESQL_USER}\" WITH SUPERUSER;"
   fi
 
   if [ -v POSTGRESQL_MASTER_USER ]; then
